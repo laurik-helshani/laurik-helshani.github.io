@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV | Laurik Helshani</title>
+  <meta name="description" content="CV profesionale në formë faqeje web për prezantim personal." />
+  <style>
+    /* ========================
+       THEMING & RESET
+    ======================== */
+    :root{
+      --bg: #0f172a;          /* slate-900 */
+      --panel: #0b1227;       /* deep panel */
+      --muted: #94a3b8;       /* slate-400 */
+      --text: #e2e8f0;        /* slate-200 */
+      --accent: #22d3ee;      /* cyan-400 */
+      --accent-2:#38bdf8;     /* sky-400 */
+      --chip: #1e293b;        /* slate-800 */
+      --border: #1f2a44;      
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-sm: 8px;
+      --container: 1150px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root{
+        --bg:#f6f7fb;
+        --panel:#ffffff;
+        --muted:#64748b;
+        --text:#0f172a;
+        --accent:#0891b2;
+        --accent-2:#0284c7;
+        --chip:#eef2ff;
+        --border:#e5e7eb;
+        --shadow: 0 10px 24px rgba(0,0,0,.08);
+      }
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif; background:linear-gradient(180deg, var(--bg), #0b1022); color:var(--text); line-height:1.6}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(var(--container), 92vw); margin-inline:auto}
+    .grid{display:grid; gap:22px}
+
+    /* ========================
+       HEADER
+    ======================== */
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(10px); background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.10)); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .avatar{width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:#001018; font-weight:700; box-shadow:var(--shadow)}
+    .brand h1{font-size:1.1rem; margin:0; letter-spacing:.3px}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:10px 14px; border:1px solid var(--border); background:var(--panel); border-radius:999px}
+    .pill svg{width:16px; height:16px}
+    .nav-links{display:flex; gap:8px; flex-wrap:wrap}
+    .nav-links a{padding:10px 14px; border-radius:999px; border:1px solid transparent}
+    .nav-links a:hover{border-color:var(--border); background:rgba(255,255,255,.03)}
+
+    /* ========================
+       HERO / SUMMARY
+    ======================== */
+    .hero{padding:34px 0 24px}
+    .hero-card{display:grid; grid-template-columns: 160px 1fr; gap:22px; padding:24px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-xl); box-shadow:var(--shadow)}
+    .photo{width:160px; height:160px; border-radius:20px; background:linear-gradient(135deg, #0ea5e9, #22d3ee); display:grid; place-items:center; font-size:42px; font-weight:800; color:#001018}
+    .hero h2{margin:0 0 6px; font-size:2rem}
+    .hero .subtitle{color:var(--muted); margin-bottom:14px}
+    .quick{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{background:var(--chip); border:1px solid var(--border); padding:8px 12px; border-radius:999px; font-size:.95rem}
+
+    /* ========================
+       LAYOUT: SIDEBAR + MAIN
+    ======================== */
+    .content{grid-template-columns: 320px 1fr; align-items:start; padding-bottom:40px}
+
+    aside, main section{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-xl); box-shadow:var(--shadow)}
+
+    aside{padding:22px}
+    aside h3, main h3{margin:0 0 14px; font-size:1.1rem; letter-spacing:.4px}
+    .list{display:grid; gap:10px}
+    .list .row{display:flex; gap:12px; align-items:flex-start; padding:10px 12px; border:1px dashed var(--border); border-radius:12px}
+    .list .row b{display:block}
+
+    .skills{display:grid; gap:12px}
+    .skill{display:grid; gap:6px}
+    .meter{height:8px; background:rgba(255,255,255,.08); border:1px solid var(--border); border-radius:999px; overflow:hidden}
+    .meter > i{display:block; height:100%; background:linear-gradient(90deg, var(--accent), var(--accent-2)); width:80%}
+
+    main{display:grid; gap:22px}
+    main section{padding:22px}
+
+    .card{border:1px solid var(--border); border-radius:16px; padding:16px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00))}
+    .card h4{margin:0 0 6px; font-size:1.05rem}
+    .muted{color:var(--muted); font-size:.95rem}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{font-size:.85rem; padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--border)}
+
+    .grid-2{display:grid; gap:16px; grid-template-columns: repeat(2,minmax(0,1fr))}
+
+    /* ========================
+       FOOTER
+    ======================== */
+    footer{padding:30px 0; color:var(--muted); text-align:center}
+
+    /* ========================
+       RESPONSIVE
+    ======================== */
+    @media (max-width: 900px){
+      .hero-card{grid-template-columns: 1fr}
+      .photo{width:120px; height:120px; border-radius:16px}
+      .content{grid-template-columns: 1fr}
+    }
+
+    /* ========================
+       PRINT (for PDF export)
+    ======================== */
+    @media print{
+      header, .actions{display:none !important}
+      body{background:white}
+      .container{width:100%; margin:0;}
+      .hero{padding-top:0}
+      .hero-card, aside, main section{box-shadow:none; border-color:#d1d5db}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true">EM</div>
+        <div>
+          <h1>Laurik Helshani</h1>
+          <span class="muted">Inxhinier i softuerit · Full‑Stack</span>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Navigimi kryesor">
+        <a href="#rreth-meje">Rreth meje</a>
+        <a href="#eksperienca">Eksperienca</a>
+        <a href="#projektet">Projektet</a>
+        <a href="#edukimi">Edukimi</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      
+    </div>
+  </header>
+
+  <main class="container grid hero">
+    <section class="hero-card" id="rreth-meje">
+      <img src="./laurikhelshani.jpg" alt="Laurik Helshani" class="photo" />
+      <div>
+        <h3>Profesor në AAB (Shkenca Kompjuterike)· Inxhinier i softuerit · Full‑Stack</h3>
+        <p class="subtitle">Software engineer and software development manager with proven experience in service delivery (internet and cable tv), mobile telephony, manufacturing industry, and IoT</p>
+        <div class="quick">
+          <span class="chip">Lokacioni: Prishtinë, KS</span>
+          <span class="chip">Disponueshmëria: Full Time</span>
+          <span class="chip">Kolegji AAB: https://aab-edu.net/en/persons/laurik-helshani-2/</span>          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="container grid content">
+    <!-- ===== Sidebar ===== -->
+    <aside id="kontakt" aria-label="Panel anësor">
+      <h3>Kontakt & Lidhje</h3>
+      <div class="list" style="margin-bottom:18px">
+        <div class="row"><div><b>Email</b><span class="muted">laurik.helshani@aab-edu.net</span></div></div>
+        <div class="row"><div><b>GitHub</b><a class="muted" href="#"> https://github.com/laurik-helshani</a></div></div>
+        <div class="row"><div><b>LinkedIn</b><a class="muted" href="#"> https://www.linkedin.com/in/laurik-helshani-45360535</a></div></div>
+        <div class="row"><div><b>Adresa</b><span class="muted">Prishtinë, Kosovë</span></div></div>
+      </div>
+
+      <h3>Aftësi Kryesore</h3>
+      <div class="skills">
+        <div class="skill"><div><b>PHP(Laravel), JAVA(Spring Boot), NodeJS(Express), Python(Flask) dhe MicroPython</b></div><div class="meter"><i style="width:95%"></i></div></div>
+        <div class="skill"><div><b>T-SQL, MySQL, PostgreSQL dhe PL/SQL</b></div><div class="meter"><i style="width:95%"></i></div></div>
+        <div class="skill"><div><b>HTML, CSS, Bootstrap</b></div><div class="meter"><i style="width:100%"></i></div></div>
+        <div class="skill"><div><b>JavaScript, jQuery, ExtJS, ReactJS, DataTables</b></div><div class="meter"><i style="width:92%"></i></div></div>
+        <div class="skill"><div><b>RESTful web services, SOAP / Microservices</b></div><div class="meter"><i style="width:98%"></i></div></div>
+      </div>
+
+      <h3 style="margin-top:18px">Gjuhë</h3>
+      <div class="list">
+        <div class="row"><div><b>Shqip</b><span class="muted">Gjuha amtare</span></div></div>
+        <div class="row"><div><b>Anglisht</b><span class="muted">Mirë (B1)</span></div></div>
+        <div class="row"><div><b>Gjermanisht</b><span class="muted">Shkelqyeshëm (C1)</span></div></div>
+      </div>
+
+      <h3 style="margin-top:18px">Interesa</h3>
+      <div class="tags">
+        <span class="tag">AI/ML</span>
+        <span class="tag">Robotikë</span>
+        <span class="tag">IoT</span>        
+      </div>
+    </aside>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+      <section id="eksperienca">
+        <h3>EKSPIERIENCA E PUNËS</h3>
+        <div class="grid-2">
+          <article class="card">
+            <h4> Software Development Manager · <span class="muted">KujtesaNET</span></h4>
+            <div class="muted">December 2007 – December 2015 (Full-time)</div>            
+          </article>
+
+          <article class="card">
+            <h4>Full‑Stack Senior Software Developer · <span class="muted">KujtesaNET</span></h4>
+            <div class="muted">January 2016 – September 2017 (Full-time) </div>            
+          </article>
+        </div>
+		<div class="grid-2">
+          <article class="card">
+            <h4>Software Development Manager  · <span class="muted">Dardafon L. L. C. (ZMobile)</span></h4>
+            <div class="muted">October 2017 – December 2019 (Full-time) </div>            
+          </article>
+
+          <article class="card">
+            <h4>Software Development Manager  · <span class="muted">DevolliGroup</span></h4>
+            <div class="muted">January 2020 – June 2023  </div>            
+          </article>
+        </div>
+		<div class="grid-2">
+          <article class="card">
+            <h4>Senior Software Developer (Remote from Kosovo)  · <span class="muted">Ingress GmBH</span></h4>
+            <div class="muted">September 2024 – May 2025 (Hamburg, Germany) </div>            
+          </article>
+
+          <article class="card">
+            <h4>Full time professor · <span class="muted">AAB-College</span></h4>
+            <div class="muted">October 2018 – current  </div>            
+          </article>
+        </div>
+      </section>
+
+      <section id="projektet">
+        <h3>PROJEKTET</h3>
+        <div class="grid-2">
+          <article class="card">
+			<h4>Digitization of the Prince Caffe Factory · <span class="muted">Devolli Corporation (Pejë)</span></h4>
+			<div class="muted">September 2023 – August 2024 (Hibrid)</div>
+            
+            <ul>
+				<li>Production Planning and Monitoring (through IoT: PLC-s and Raspberry Pi PICO-s)</li>
+				<li>Programming of the Raw Material Warehouse</li>
+				<li>Programming of the Time Attendance System and Devices</li>
+				<li>Programming of the Module for Production Recipes and Ingredients</li>
+				<li>Providing and consuming RESTful web services for integration and communication across systems (our system and Microsoft Navision)</li>
+			</ul>
+            <div class="tags">
+				<span class="tag">Python 3</span>
+				<span class="tag">MicroPython,</span>
+				<span class="tag">PostgreSQL</span>
+				<span class="tag">Bootstrap 4</span>
+				<span class="tag">jQuery</span>
+				<span class="tag">DataTables</span>
+			</div>
+          </article>
+          
+        </div>
+      </section>
+
+      <section id="edukimi">
+        <h3>EDUKIMI</h3>
+        <div class="grid-2">
+          <article class="card">
+            <h4>Fakulteti i Informatikës · <span class="muted">TU-Wien</span></h4>
+            <div class="muted">2000 – 2007</div>
+            <p>Fokus: Inxhinieri softuerike.</p>
+          </article>
+		  <article class="card">
+            <h4>PhD · <span class="muted">Universiteti Evropian i Tiranës</span></h4>
+            <div class="muted">2013 – 2018</div>
+            <p>Fokus: IT (Programim).</p>
+          </article>
+		  
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="container">
+    © <span id="year"></span> © Laurik Helshani. All rights reserved. 
+  </footer>
+
+  <script>
+    // Iniciale dinamike në avatar, viti në footer
+    const fullName = document.querySelector('.brand h1')?.textContent?.trim() || 'Emri Mbiemri';
+    const initials = fullName.split(/\s+/).map(w=>w[0]?.toUpperCase()).slice(0,2).join('');
+    document.querySelectorAll('.avatar, .photo').forEach(el=>{ if(el && el.textContent.trim()==='EM') el.textContent = initials })
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
